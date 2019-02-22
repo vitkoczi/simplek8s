@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
-metadate:
+metadata:
   name: client-pod
-  lables: 
+  labels: 
     component: web
 spec:
   containers:
     - name: client
       image: vitkoczi/multi-client
       ports:
-        - conatinerPort: 3000
+        - containerPort: 3000
