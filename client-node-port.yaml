@@ -1,12 +1,19 @@
 apiVersion: v1
+# Sets up networking in a Kubernetes Cluster
 kind: Service
 metadata:
   name: client-node-port
+
+# can be ClusterIp, Nodeport, LoadBalancer, Ingress
 spec:
+#purpose a cluster to an oudside word, only for developmentb
   type: NodePort
   ports:
-    - ports: 3050
+  # PODS can communicate via these ports, this case itis not useful as we do not have other pod
+    - port: 3050
+    #same as the container port on pod definition
       targetPort: 3000
+    # via this can access te pod app itself from outside word, therefore it is not used in the prod env
       nodePort: 31515
   selector:
     component: web
